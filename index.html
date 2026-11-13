@@ -1,0 +1,262 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Yanis Ethvignot Portfolio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap">
+<style>
+/* Layout: single narrow column, project rows split into name/stack left and description right, hairline dividers instead of cards. */
+:root {
+  --bg: #F4F6F5;
+  --surface: #FFFFFF;
+  --fg: #14191B;
+  --muted: #55625F;
+  --line: #D5DCD9;
+  --accent: #0B766F;
+  --accent-soft: #DDEFEC;
+  --font-display: "Space Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0F1415;
+    --surface: #161D1E;
+    --fg: #E5EAE8;
+    --muted: #9AA8A4;
+    --line: #26302F;
+    --accent: #4FD0C2;
+    --accent-soft: #14312F;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0F1415;
+  --surface: #161D1E;
+  --fg: #E5EAE8;
+  --muted: #9AA8A4;
+  --line: #26302F;
+  --accent: #4FD0C2;
+  --accent-soft: #14312F;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  padding-block: 56px 72px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.wrap { max-width: 860px; margin: 0 auto; display: flex; flex-direction: column; gap: 56px; }
+a { color: var(--accent); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
+h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; margin: 0; line-height: 1.15; }
+
+/* Header */
+.head { display: flex; flex-direction: column; gap: 20px; }
+.role { font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.04em; color: var(--accent); text-transform: uppercase; }
+h1 { font-size: clamp(2.4rem, 7vw, 3.6rem); font-weight: 700; letter-spacing: -0.02em; }
+.lede { font-size: 1.15rem; max-width: 62ch; margin: 0; color: var(--fg); }
+.contact { display: flex; flex-wrap: wrap; gap: 10px 20px; align-items: center; font-size: 15px; }
+.contact .mail { font-family: var(--font-mono); font-size: 14px; }
+.copy {
+  font: inherit; font-size: 13px; color: var(--fg); background: var(--surface);
+  border: 1px solid var(--line); border-radius: 6px; padding: 3px 10px; cursor: pointer;
+}
+.copy:hover { border-color: var(--accent); }
+
+/* Sections */
+.sec { display: flex; flex-direction: column; gap: 8px; }
+.sec > h2 { font-size: 1.05rem; font-weight: 600; letter-spacing: 0.02em; color: var(--muted); text-transform: uppercase; font-family: var(--font-mono); font-weight: 500; font-size: 13px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+.row { display: grid; grid-template-columns: minmax(0, 220px) minmax(0, 1fr); gap: 8px 32px; padding: 22px 0; border-bottom: 1px solid var(--line); }
+.row:last-child { border-bottom: 0; }
+.row .k { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.row h3 { font-size: 1.25rem; font-weight: 600; }
+.row h3 a { color: var(--fg); text-decoration-color: var(--line); }
+.row h3 a:hover { color: var(--accent); text-decoration-color: var(--accent); }
+.meta { font-family: var(--font-mono); font-size: 12.5px; color: var(--muted); }
+.row p { margin: 0 0 10px; max-width: 62ch; }
+.row p:last-child { margin-bottom: 0; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+.tag { font-family: var(--font-mono); font-size: 12px; color: var(--accent); background: var(--accent-soft); padding: 2px 8px; border-radius: 4px; }
+.group { font-family: var(--font-display); font-size: 1.1rem; font-weight: 600; margin-top: 22px; }
+.group:first-of-type { margin-top: 10px; }
+
+/* Skills */
+.skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 20px 32px; padding-top: 14px; }
+.skills div { min-width: 0; }
+.skills dt { font-family: var(--font-mono); font-size: 12.5px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 4px; }
+.skills dd { margin: 0; }
+
+.foot { font-size: 14px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 20px; }
+
+@media (max-width: 640px) {
+  body { padding-block: 36px 56px; }
+  .row { grid-template-columns: minmax(0, 1fr); }
+}
+</style>
+
+<div class="wrap">
+  <header class="head">
+    <div class="role">Software engineer · C++ · Linux · Blender user</div>
+    <h1>Yanis Ethvignot</h1>
+    <p class="lede">I build C++ and Python software for real-time distributed systems at Thales, and I use Blender constantly: building it from source, rendering with Cycles on OptiX, and writing tools around it.</p>
+    <div class="contact">
+      <span class="mail" id="mail">ethvignot.yanis@gmail.com</span>
+      <button class="copy" id="copy" type="button">Copy email</button>
+      <a href="https://github.com/yaniswav" target="_blank" rel="noopener">github.com/yaniswav</a>
+      <span>Paris, France · open to relocating to Amsterdam</span>
+    </div>
+  </header>
+
+  <section class="sec" aria-labelledby="work">
+    <h2 id="work">Selected work</h2>
+
+    <div class="group">Blender and 3D</div>
+    <div class="row">
+      <div class="k">
+        <h3>Custom Blender build</h3>
+        <span class="meta">C++ · CMake</span>
+      </div>
+      <div>
+        <p>My Blender is compiled from source with a DLSS pull request applied, so I deal with the CMake setup, the library dependencies and the GPU stack myself. Final renders go through Cycles with OptiX on an RTX 4080.</p>
+        <div class="tags"><span class="tag">Blender</span><span class="tag">Cycles</span><span class="tag">OptiX</span><span class="tag">CMake</span></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="k">
+        <h3><a href="https://github.com/yaniswav/FileManagerDaz" target="_blank" rel="noopener">FileManagerDaz</a></h3>
+        <span class="meta">Rust · Tauri v2 · Svelte 5</span>
+      </div>
+      <div>
+        <p>Desktop content manager for DAZ 3D libraries. It scans, organizes and cleans very large asset collections.</p>
+        <div class="tags"><span class="tag">Rust</span><span class="tag">Tauri</span><span class="tag">SQLite</span></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="k">
+        <h3><a href="https://github.com/yaniswav/import_daz" target="_blank" rel="noopener">import_daz</a></h3>
+        <span class="meta">Python · Fork</span>
+      </div>
+      <div>
+        <p>Fork of the importer that brings native DAZ files (.duf, .dsf) into Blender, kept in my own pipeline for DAZ Genesis 8 and 9 characters.</p>
+        <div class="tags"><span class="tag">Blender add-on</span><span class="tag">Python</span></div>
+      </div>
+    </div>
+
+    <div class="group">Systems and robotics</div>
+    <div class="row">
+      <div class="k">
+        <h3><a href="https://github.com/yaniswav/TopicForge" target="_blank" rel="noopener">TopicForge</a></h3>
+        <span class="meta">Python · MIT</span>
+      </div>
+      <div>
+        <p>Read-only MCP server for ROS 2 and DDS. An AI agent can inspect topics, DDS participants, QoS mismatches and rosbags. There is no write path by design, so it can never command a robot.</p>
+        <div class="tags"><span class="tag">ROS 2</span><span class="tag">DDS</span><span class="tag">QoS</span><span class="tag">MCP</span></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="k">
+        <h3><a href="https://github.com/yaniswav/CESI-Phoenix" target="_blank" rel="noopener">CESI Phoenix</a></h3>
+        <span class="meta">C++ · MIT · School project</span>
+      </div>
+      <div>
+        <p>Code for the Phoenix hand, a school project to help people without hands.</p>
+        <div class="tags"><span class="tag">C++</span><span class="tag">Team project</span></div>
+      </div>
+    </div>
+
+    <div class="group">Desktop tools</div>
+    <div class="row">
+      <div class="k">
+        <h3><a href="https://github.com/yaniswav/win-care" target="_blank" rel="noopener">win-care</a></h3>
+        <span class="meta">Rust</span>
+      </div>
+      <div>
+        <p>Native Windows 10/11 maintenance and diagnostics utility with network tuning and registry debloat. Available in English and French.</p>
+        <div class="tags"><span class="tag">Rust</span><span class="tag">Windows</span></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="k">
+        <h3><a href="https://github.com/yaniswav/vrec" target="_blank" rel="noopener">vrec</a></h3>
+        <span class="meta">Python · MIT</span>
+      </div>
+      <div>
+        <p>Unattended OBS recording of web videos, one after another, driven through obs-websocket and the Chrome DevTools Protocol.</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag">OBS</span><span class="tag">CDP</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="exp">
+    <h2 id="exp">Experience</h2>
+    <div class="row">
+      <div class="k">
+        <h3>Thales</h3>
+        <span class="meta">Oct 2023 – Sep 2026<br>Software development apprentice</span>
+      </div>
+      <div>
+        <p>Migrated C++/DDS frameworks from OpenSplice to RTI Connext on projects of more than 2 million lines of code. Built Python adapters, systemd services and Debian packages. Final-year project: C++/DDS gateway for a multi-system demonstrator.</p>
+        <div class="tags"><span class="tag">C++</span><span class="tag">DDS</span><span class="tag">Debian</span><span class="tag">systemd</span></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="k">
+        <h3>CCU, Taiwan</h3>
+        <span class="meta">Aug – Nov 2025<br>AI research intern</span>
+      </div>
+      <div>
+        <p>Applied computer vision research on waste and litter detection at National Chung Cheng University.</p>
+        <div class="tags"><span class="tag">OpenCV</span><span class="tag">YOLO</span><span class="tag">TensorFlow</span></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="k">
+        <h3>Seagate Technology</h3>
+        <span class="meta">Apr – Jul 2023<br>Software QA intern</span>
+      </div>
+      <div>
+        <p>Built a React and TypeScript single-page app to manage automated test orders.</p>
+        <div class="tags"><span class="tag">React</span><span class="tag">TypeScript</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="skills">
+    <h2 id="skills">Skills and education</h2>
+    <dl class="skills">
+      <div><dt>Languages</dt><dd>C++, C, Python, Rust, C#, Bash, TypeScript, SQL</dd></div>
+      <div><dt>Systems</dt><dd>Linux (Debian), CMake, Git, Docker, RTI Connext, OpenSplice</dd></div>
+      <div><dt>Graphics and 3D</dt><dd>Blender, Cycles, DAZ Studio</dd></div>
+      <div><dt>Education</dt><dd>CESI École d'Ingénieurs, Computer Science engineering degree, 2021–2026</dd></div>
+      <div><dt>Spoken</dt><dd>French (native), English C1 (TOEIC 960), Spanish A2, Japanese A1</dd></div>
+    </dl>
+  </section>
+
+  <p class="foot">Source code for the public projects is on GitHub. Private work, including the Thales projects, is described at a high level only.</p>
+</div>
+
+<script>
+(function () {
+  var btn = document.getElementById('copy');
+  var mail = document.getElementById('mail');
+  btn.addEventListener('click', function () {
+    var done = function () { btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = 'Copy email'; }, 1600); };
+    var fallback = function () {
+      var r = document.createRange(); r.selectNodeContents(mail);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+    };
+    try {
+      navigator.clipboard.writeText(mail.textContent).then(done, fallback);
+    } catch (e) { fallback(); }
+  });
+})();
+</script>
+
+</body></html>
